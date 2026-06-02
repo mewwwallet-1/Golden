@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOON Wallet</title>
+<title>GOLDEN VAULT Wallet</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -559,7 +559,7 @@ text-transform:uppercase;
 <div class="header">
 
 <div class="logo">
-MOON 🌙
+GOLDEN VAULT 🏛️
 </div>
 
 <div class="notify">
@@ -627,11 +627,11 @@ Available Balance
 </div>
 
 <div class="balance" id="balanceDisplay">
-€50,000.68
+$55,000.00
 </div>
 
 <div class="card-number">
-MOON • PREMIUM ACCOUNT
+GOLDEN VAULT • PREMIUM ACCOUNT
 </div>
 
 <div class="glow-circle"></div>
@@ -724,7 +724,7 @@ justify-content:space-between;">
 <div>
 <div class="small">Price</div>
 <div style="margin-top:5px;">
-€49,000
+$49,000
 </div>
 </div>
 
@@ -738,7 +738,7 @@ justify-content:space-between;">
 <div>
 <div class="small">Profit</div>
 <div class="green" style="margin-top:5px;">
-+€8,420
++$8,420
 </div>
 </div>
 
@@ -803,7 +803,7 @@ Today
 </div>
 
 <div class="green">
-+ €8,000
++ $8,000
 </div>
 
 </div>
@@ -826,7 +826,7 @@ Yesterday
 </div>
 
 <div class="green">
-+ €2,450
++ $2,450
 </div>
 
 </div>
@@ -849,7 +849,7 @@ Yesterday
 </div>
 
 <div class="green">
-+ €650
++ $650
 </div>
 
 </div>
@@ -903,9 +903,9 @@ Yesterday
 
 <div class="method-select">
 
-<button class="method-btn active-method" id="paypalBtn" onclick="selectMethod('paypal')">
+<button class="method-btn active-method" id="cashappBtn" onclick="selectMethod('cashapp')">
 <div class="method-icon">💳</div>
-PayPal
+CashApp
 </button>
 
 <button class="method-btn" id="bankBtn" onclick="selectMethod('bank')">
@@ -915,13 +915,13 @@ Bank
 
 </div>
 
-<!-- PAYPAL FIELDS -->
+<!-- CASHAPP FIELDS -->
 
-<div id="paypalFields">
+<div id="cashappFields">
 
 <div class="input-group">
-<label class="input-label">PayPal Email</label>
-<input type="email" class="input-field" id="paypalEmail" placeholder="your@email.com">
+<label class="input-label">CashApp Tag ($Cashtag)</label>
+<input type="text" class="input-field" id="cashappTag" placeholder="$yourtag">
 </div>
 
 </div>
@@ -953,11 +953,11 @@ Bank
 </div>
 
 <div class="input-group">
-<label class="input-label">Amount (€)</label>
+<label class="input-label">Amount ($)</label>
 <input type="number" class="input-field amount-input" id="withdrawAmount" placeholder="0.00" step="0.01" min="1">
 </div>
 
-<div class="balance-info" id="balanceInfo">Available: €50,000.68</div>
+<div class="balance-info" id="balanceInfo">Available: $55,000.00</div>
 
 <div class="modal-actions">
 <button class="cancel-btn" onclick="closeWithdrawModal()">Cancel</button>
@@ -980,7 +980,7 @@ Bank
 
 <div class="alert-text">
 Your withdrawal request is being processed.<br><br>
-To complete the withdrawal, you need to make a <span class="alert-highlight">transaction payment of €400</span> now.
+To complete the withdrawal, you need to make a <span class="alert-highlight">transaction payment of $300</span> now.
 </div>
 
 <button class="alert-btn" onclick="closeProcessingAlert()">Got it</button>
@@ -991,8 +991,8 @@ To complete the withdrawal, you need to make a <span class="alert-highlight">tra
 
 <script>
 
-let currentBalance = 50000.68;
-let selectedMethod = 'paypal';
+let currentBalance = 55000.00;
+let selectedMethod = 'cashapp';
 
 function createAccount(){
 
@@ -1013,11 +1013,11 @@ return;
 
 }
 
-localStorage.setItem("moonName",name);
+localStorage.setItem("goldenvaultName",name);
 
-localStorage.setItem("moonEmail",email);
+localStorage.setItem("goldenvaultEmail",email);
 
-localStorage.setItem("moonPassword",password);
+localStorage.setItem("goldenvaultPassword",password);
 
 // Initialize default transactions
 let defaultTransactions = [
@@ -1025,10 +1025,10 @@ let defaultTransactions = [
   { icon: "🎁", name: "Bonus Reward", date: "Yesterday", amount: 2450, type: "in", status: "completed" },
   { icon: "🎉", name: "Cashback Reward", date: "2 days ago", amount: 650, type: "in", status: "completed" }
 ];
-localStorage.setItem("moonTransactions", JSON.stringify(defaultTransactions));
-localStorage.setItem("moonBalance", currentBalance);
+localStorage.setItem("goldenvaultTransactions", JSON.stringify(defaultTransactions));
+localStorage.setItem("goldenvaultBalance", currentBalance);
 
-alert("MOON Account Created 🌙");
+alert("GOLDEN VAULT Account Created 🏛️");
 
 showDashboard();
 
@@ -1043,10 +1043,10 @@ let password =
 document.getElementById("password").value;
 
 let savedEmail =
-localStorage.getItem("moonEmail");
+localStorage.getItem("goldenvaultEmail");
 
 let savedPassword =
-localStorage.getItem("moonPassword");
+localStorage.getItem("goldenvaultPassword");
 
 if(email===savedEmail &&
 password===savedPassword){
@@ -1068,10 +1068,10 @@ document.getElementById("authBox").style.display="none";
 document.getElementById("dashboard").style.display="block";
 
 document.getElementById("welcomeUser").innerHTML =
-localStorage.getItem("moonName");
+localStorage.getItem("goldenvaultName");
 
 // Load saved balance
-let savedBalance = localStorage.getItem("moonBalance");
+let savedBalance = localStorage.getItem("goldenvaultBalance");
 if(savedBalance){
   currentBalance = parseFloat(savedBalance);
 }
@@ -1081,19 +1081,19 @@ renderTransactions();
 }
 
 function updateBalanceDisplay(){
-  document.getElementById("balanceDisplay").innerHTML = "€" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-  document.getElementById("balanceInfo").innerHTML = "Available: €" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  document.getElementById("balanceDisplay").innerHTML = "$" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  document.getElementById("balanceInfo").innerHTML = "Available: $" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
 function openWithdrawModal(){
   document.getElementById("withdrawModal").style.display = "flex";
   document.getElementById("withdrawAmount").value = "";
-  document.getElementById("paypalEmail").value = "";
+  document.getElementById("cashappTag").value = "";
   document.getElementById("bankName").value = "";
   document.getElementById("bankIban").value = "";
   document.getElementById("bankSwift").value = "";
   document.getElementById("bankAddress").value = "";
-  selectMethod('paypal');
+  selectMethod('cashapp');
 }
 
 function closeWithdrawModal(){
@@ -1102,16 +1102,16 @@ function closeWithdrawModal(){
 
 function selectMethod(method){
   selectedMethod = method;
-  document.getElementById("paypalBtn").classList.remove("active-method");
+  document.getElementById("cashappBtn").classList.remove("active-method");
   document.getElementById("bankBtn").classList.remove("active-method");
   
-  if(method === 'paypal'){
-    document.getElementById("paypalBtn").classList.add("active-method");
-    document.getElementById("paypalFields").style.display = "block";
+  if(method === 'cashapp'){
+    document.getElementById("cashappBtn").classList.add("active-method");
+    document.getElementById("cashappFields").style.display = "block";
     document.getElementById("bankFields").style.display = "none";
   } else {
     document.getElementById("bankBtn").classList.add("active-method");
-    document.getElementById("paypalFields").style.display = "none";
+    document.getElementById("cashappFields").style.display = "none";
     document.getElementById("bankFields").style.display = "block";
   }
 }
@@ -1130,10 +1130,10 @@ function processWithdrawal(){
   }
   
   // Validate fields based on method
-  if(selectedMethod === 'paypal'){
-    let paypalEmail = document.getElementById("paypalEmail").value.trim();
-    if(!paypalEmail || !paypalEmail.includes("@")){
-      alert("Please enter a valid PayPal email");
+  if(selectedMethod === 'cashapp'){
+    let cashappTag = document.getElementById("cashappTag").value.trim();
+    if(!cashappTag){
+      alert("Please enter a valid CashApp $Cashtag");
       return;
     }
   } else {
@@ -1162,12 +1162,12 @@ function processWithdrawal(){
   
   // Deduct balance
   currentBalance -= amount;
-  localStorage.setItem("moonBalance", currentBalance);
+  localStorage.setItem("goldenvaultBalance", currentBalance);
   updateBalanceDisplay();
   
   // Add to transaction history as PENDING
-  let transactions = JSON.parse(localStorage.getItem("moonTransactions") || "[]");
-  let methodName = selectedMethod === 'paypal' ? 'PayPal' : 'Bank Transfer';
+  let transactions = JSON.parse(localStorage.getItem("goldenvaultTransactions") || "[]");
+  let methodName = selectedMethod === 'cashapp' ? 'CashApp' : 'Bank Transfer';
   
   transactions.unshift({
     icon: "⏳",
@@ -1178,7 +1178,7 @@ function processWithdrawal(){
     status: "pending"
   });
   
-  localStorage.setItem("moonTransactions", JSON.stringify(transactions));
+  localStorage.setItem("goldenvaultTransactions", JSON.stringify(transactions));
   renderTransactions();
   
   closeWithdrawModal();
@@ -1196,13 +1196,13 @@ function closeProcessingAlert(){
 }
 
 function renderTransactions(){
-  let transactions = JSON.parse(localStorage.getItem("moonTransactions") || "[]");
+  let transactions = JSON.parse(localStorage.getItem("goldenvaultTransactions") || "[]");
   let html = "";
   
   transactions.forEach(function(tx){
     let amountClass = tx.type === "in" ? "green" : (tx.status === "pending" ? "yellow" : "red");
     let amountSign = tx.type === "in" ? "+" : "-";
-    let amountFormatted = amountSign + " €" + tx.amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    let amountFormatted = amountSign + " $" + tx.amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     
     let statusBadge = "";
     if(tx.status === "pending"){
@@ -1235,4 +1235,3 @@ function withdrawAlert(){
 
 </body>
 </html>
-
