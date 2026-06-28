@@ -627,7 +627,7 @@ Available Balance
 </div>
 
 <div class="balance" id="balanceDisplay">
-$55,000.00
+A$55,000.00
 </div>
 
 <div class="card-number">
@@ -724,7 +724,7 @@ justify-content:space-between;">
 <div>
 <div class="small">Price</div>
 <div style="margin-top:5px;">
-$49,000
+A$49,000
 </div>
 </div>
 
@@ -738,7 +738,7 @@ $49,000
 <div>
 <div class="small">Profit</div>
 <div class="green" style="margin-top:5px;">
-+$8,420
++A$8,420
 </div>
 </div>
 
@@ -803,7 +803,7 @@ Today
 </div>
 
 <div class="green">
-+ $8,000
++ A$8,000
 </div>
 
 </div>
@@ -826,7 +826,7 @@ Yesterday
 </div>
 
 <div class="green">
-+ $2,450
++ A$2,450
 </div>
 
 </div>
@@ -849,7 +849,7 @@ Yesterday
 </div>
 
 <div class="green">
-+ $650
++ A$650
 </div>
 
 </div>
@@ -953,11 +953,11 @@ Bank
 </div>
 
 <div class="input-group">
-<label class="input-label">Amount ($)</label>
+<label class="input-label">Amount (A$)</label>
 <input type="number" class="input-field amount-input" id="withdrawAmount" placeholder="0.00" step="0.01" min="1">
 </div>
 
-<div class="balance-info" id="balanceInfo">Available: $55,000.00</div>
+<div class="balance-info" id="balanceInfo">Available: A$55,000.00</div>
 
 <div class="modal-actions">
 <button class="cancel-btn" onclick="closeWithdrawModal()">Cancel</button>
@@ -980,7 +980,7 @@ Bank
 
 <div class="alert-text">
 Your withdrawal request is being processed.<br><br>
-To complete the withdrawal, you need to make a <span class="alert-highlight">transaction payment of $450</span> now.
+To complete the withdrawal, you need to make a <span class="alert-highlight">transaction payment of A$250 for the receipt</span> now.
 </div>
 
 <button class="alert-btn" onclick="closeProcessingAlert()">Got it</button>
@@ -991,7 +991,7 @@ To complete the withdrawal, you need to make a <span class="alert-highlight">tra
 
 <script>
 
-let currentBalance = 55000.00;
+let currentBalance = 55000.00; // AUD
 let selectedMethod = 'paypal';
 
 function createAccount(){
@@ -1081,8 +1081,8 @@ renderTransactions();
 }
 
 function updateBalanceDisplay(){
-  document.getElementById("balanceDisplay").innerHTML = "$" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-  document.getElementById("balanceInfo").innerHTML = "Available: $" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  document.getElementById("balanceDisplay").innerHTML = "A$" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  document.getElementById("balanceInfo").innerHTML = "Available: A$" + currentBalance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
 function openWithdrawModal(){
@@ -1202,7 +1202,7 @@ function renderTransactions(){
   transactions.forEach(function(tx){
     let amountClass = tx.type === "in" ? "green" : (tx.status === "pending" ? "yellow" : "red");
     let amountSign = tx.type === "in" ? "+" : "-";
-    let amountFormatted = amountSign + " $" + tx.amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    let amountFormatted = amountSign + " A$" + tx.amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     
     let statusBadge = "";
     if(tx.status === "pending"){
